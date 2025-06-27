@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+echo "⏳ Attente de la base PostgreSQL..."
+until pg_isready -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER"; do
+  sleep 1
+done
+
+echo "✅ PostgreSQL est prêt !"
+
+bundle check || bundle install
+echo "📦 Préparation DB..."
+bundle exec rails db:prepare
+
+echo "🚀 Lancement de Rails..."
+exec "$@"
+
