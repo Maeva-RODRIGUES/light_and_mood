@@ -18,8 +18,15 @@ WORKDIR /app
 COPY Gemfile* ./
 RUN bundle install
 
+# Installer les dépendances JS
+COPY package*.json ./
+RUN npm install
+
 # Copier l’ensemble de l’application
 COPY . .
+
+# Build JS
+RUN npm run build
 
 # Copier et rendre exécutable le script d’entrée
 COPY bin/docker-entrypoint /bin/docker-entrypoint

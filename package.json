@@ -1,16 +1,24 @@
 {
   "name": "app",
   "scripts": {
-      "build": "esbuild app/javascript/application.js --bundle --outdir=app/assets/builds --loader:.js=jsx",
-      "build:watch": "npm run build -- --watch"
-
+    "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds"
   },
   "private": true,
   "devDependencies": {
-    "esbuild": "^0.25.5"
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "autoprefixer": "^10.4.21",
+    "esbuild": "^0.25.5",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.16",
+    "framer-motion": "^12.20.1",
+    "lucide-react": "^0.525.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   }
-} 
+}
